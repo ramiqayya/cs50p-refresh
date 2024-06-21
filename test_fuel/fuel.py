@@ -2,33 +2,33 @@
 def main():
 
     while True:
+
         fraction=input("Fraction: ")
-        
-        per=convert(fraction)
-        if per=="zero":
-            continue
-        else:
+        try:
+            per=convert(fraction)
+            
             print(gauge(per))
             break
+        except (ValueError,ZeroDivisionError):
+            pass
+
 
 
 def convert(fraction):
     
-    try:
-
-        x,y=fraction.split('/')
-        x=int(x)
-        y=int(y)
-        
-        if x > y:
-            raise ValueError
-        elif y==0:
-            raise ZeroDivisionError
-        else:
-            return int((x/y)*100)
+ 
+    x,y=fraction.split('/')
+    x=int(x)
+    y=int(y)
     
-    except (ValueError,ZeroDivisionError):
-        return "zero"
+    if y==0:
+        raise ZeroDivisionError
+    elif x > y:
+        raise ValueError
+    else:
+        return int((x/y)*100)
+    
+    
     
 
 

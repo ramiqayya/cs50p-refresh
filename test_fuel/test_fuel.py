@@ -1,13 +1,24 @@
 from fuel import convert,gauge
+import pytest
 
-def test_conver_per():
+def test_convert_per():
     assert convert("3/4")== 75
     assert convert("1/2")== 50
 
 def test_conver_zero():
     assert convert("0/4")== 0
-    assert convert("1/0")== "zero"
-    assert convert("5/2")== "zero"
+
+def test_convert_string():
+    with pytest.raises(ValueError):
+        convert("cat/cat")
+        
+def test_convert_divide_by_zero():
+    with pytest.raises(ZeroDivisionError):
+        convert("1/0")
+
+def test_covert_value():
+    with pytest.raises(ValueError):
+        convert("5/3")
 
 
 def test_guage_full():
