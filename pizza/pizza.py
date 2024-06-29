@@ -13,7 +13,7 @@ elif not sys.argv[1].endswith(".csv"):
 try:
      with open(sys.argv[1]) as csvfile:
             reader = csv.DictReader(csvfile)
-            headers = reader.fieldnames
+            # headers = reader.fieldnames
             table = tabulate(reader, headers="keys", tablefmt="grid")
             print(table)
 
