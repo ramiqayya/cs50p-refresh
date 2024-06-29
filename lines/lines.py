@@ -1,11 +1,11 @@
 import sys
 
 if len(sys.argv)>2:
-    print("Too many arguments")
+    sys.exit("Too many arguments")
 elif len(sys.argv)<2:
-    print("Too few arguments")
+    sys.exit("Too few arguments")
 elif not sys.argv[1].endswith(".py"):
-    print("Not a python file")
+    sys.exit("Not a python file")
 
 
 try:
@@ -23,4 +23,4 @@ try:
 
 
 except (FileNotFoundError):
-    print("File not Found")
+    sys.exit("File not Found")
