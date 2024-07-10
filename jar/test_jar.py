@@ -1,8 +1,13 @@
 from jar import Jar
+import pytest
 
 
 def test_init():
-    ...
+    jar=Jar()
+    with pytest.raises(ValueError):
+        jar.__init__(-1)
+    with pytest.raises(ValueError):
+        jar.__init__(5.5)
 
 
 def test_str():
@@ -15,8 +20,12 @@ def test_str():
 
 
 def test_deposit():
-    ...
+    jar=Jar()
+    with pytest.raises(ValueError):
+        jar.deposit(-5)
 
 
 def test_withdraw():
-    ...
+    jar=Jar()
+    with pytest.raises(ValueError):
+        jar.withdraw(30)
